@@ -1,0 +1,77 @@
+plugins {
+    id 'java'
+    id 'io.qameta.allure' version '2.11.2'
+    id 'io.freefair.lombok' version '8.6'
+}
+
+group = "jsd.github.com"
+version = "1.0-SNAPSHOT"
+
+repositories {
+    mavenCentral()
+}
+
+def allureVersion = "2.24.0",
+    slf4jVersion = "2.0.12",
+    restAssuredVersion = "5.4.0",
+    junitVersion = "5.10.1",
+    javaFakerVersion = "1.0.2",
+    jacksonVersion = "2.16.1",
+    assertJVersion = "3.25.3"
+
+allure {
+    report {
+        version.set(allureVersion)
+    }
+    adapter {
+        aspectjWeaver.set(true)
+        frameworks {
+            junit5 {
+                adapterVersion.set(allureVersion)
+            }
+        }
+    }
+}
+
+dependencies {
+    testImplementation(
+            "io.qameta.allure:allure-rest-assured:$allureVersion",
+            "org.junit.jupiter:junit-jupiter:$junitVersion",
+            "io.rest-assured:rest-assured:$restAssuredVersion",
+            "io.rest-assured:json-schema-validator:$restAssuredVersion",
+            "org.slf4j:slf4j-simple:$slf4jVersion",
+            "com.github.javafaker:javafaker:$javaFakerVersion",
+            "com.fasterxml.jackson.core:jackson-databind:$jacksonVersion",
+            "org.assertj:assertj-core:$assertJVersion"
+    )
+}
+
+compileJava {
+    options.encoding = 'UTF-8'
+}
+
+compileTestJava {
+    options.encoding = 'UTF-8'
+}
+
+tasks.withType(Test).configureEach {
+    useJUnitPlatform()
+    systemProperties(System.getProperties())
+
+    if (System.getProperty("threads") != null) {
+        systemProperties += [
+                'junit.jupiter.execution.parallel.enabled'                 : true,
+                'junit.jupiter.execution.parallel.mode.default'            : 'concurrent',
+                'junit.jupiter.execution.parallel.mode.classes.default'    : 'concurrent',
+                'junit.jupiter.execution.parallel.config.strategy'         : 'fixed',
+                'junit.jupiter.execution.parallel.config.fixed.parallelism': System.getProperty("threads").toInteger()
+        ]
+    }
+
+    testLogging {
+        lifecycle {
+            events "started", "skipped", "failed", "standard_error", "standard_out"
+            exceptionFormat "short"
+        }
+    }
+}
