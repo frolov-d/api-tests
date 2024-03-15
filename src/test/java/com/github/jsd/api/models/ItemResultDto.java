@@ -1,16 +1,15 @@
 package com.github.jsd.api.models;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
-import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
-import lombok.Builder;
 import lombok.Data;
 
-@Builder
 @Data
 @JsonIgnoreProperties(ignoreUnknown = true)
-@JsonInclude(JsonInclude.Include.NON_DEFAULT)
-public class CreateItemRequestDto {
+public class ItemResultDto {
+
+    @JsonProperty(required = true)
+    private String id;
 
     @JsonProperty(required = true)
     private String name;
@@ -20,7 +19,6 @@ public class CreateItemRequestDto {
 
     @JsonProperty(required = true)
     private String description;
-
     private String color;
     private String params;
     private String photo;
