@@ -81,3 +81,69 @@ gradle clean test
 [Back to top](#content)
 
 ---
+
+## Running tests in [Jenkins](https://jenkins.autotests.cloud/job/018-JonSnowDies-api/)
+
+Main page of the build:
+<div style="text-align: center;">
+  <img src="media/screens/Jenkins_main.png" alt="Jenkins" width="800">
+</div>
+
+Job configuration:
+<div style="text-align: center;">
+  <img src="media/screens/Jenkins_config.gif" alt="Jenkins" width="800">
+</div>
+
+[Back to top](#content)
+
+---
+
+##  Test results report in [Allure Report](https://jenkins.autotests.cloud/job/018-JonSnowDies-api/2/allure/)
+
+<code><strong>Allure Report</strong></code> overview page:
+
+<div style="text-align: center;">
+  <img src="media/screens/Allure_overview.png" alt="allure5" width="800">
+</div>
+
+<code><strong>Allure Report</strong></code> behavior page:
+<div style="text-align: center;">
+  <img src="media/screens/Allure_behaviors.png" alt="allure5" width="800">
+</div>
+
+[Back to top](#content)
+
+----
+## [Allure TestOps](https://allure.autotests.cloud/launch/37254) integration
+
+<code><strong>Allure TestOps</strong></code> dashboard page:
+<div style="text-align: center;">
+  <img src="media/screens/AllureTestOps_Dashboard.png" alt="allure5" width="800">
+</div>
+
+<code><strong>Allure TestOps</strong></code> test cases page:
+<div style="text-align: center;">
+  <img src="media/screens/AllureTestOps_Cases.png" alt="allure5" width="800">
+</div>
+
+[Back to top](#content)
+
+----
+## [Jira](https://jira.autotests.cloud/browse/HOMEWORK-1168) integration
+
+<div style="text-align: center;">
+  <img src="media/screens/Jira.png" alt="jira-project" width="800">
+</div>
+
+[Back to top](#content)
+
+----
+## Telegram notifications
+
+After passing the tests, a report can be sent to <code>Telegram</code> messenger.
+
+<div style="text-align: center;">
+    <img title="Telegram Notifications" src="media/screens/Telegram.png" width="500" alt="Screenshot of Telegram Notifications">
+</div>
+
+[Back to top](#content)
